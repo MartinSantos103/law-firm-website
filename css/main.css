@@ -1,0 +1,294 @@
+/* ==========================================================================
+   DR. ALEJANDRO VALENZUELA - ABOGADO
+   CSS PRINCIPAL - SISTEMA DE DISEÑO UX/UI ELEVADO
+   --------------------------------------------------------------------------
+   DOCUMENTACIÓN TÉCNICA:
+   - Paleta de diseño:
+     * Fondo Base: #FAF6F0 (Crema cálido)
+     * Superficie: #FFFFFF (Blanco puro con elevaciones sutiles)
+     * Texto: #232323 (Carbono oscuro)
+     * Acento Principal: #1F4741 (Verde azulado profundo de prestigio)
+     * Acento Secundario: #C99A6C (Arena / Dorado apagado)
+     * Acento Tostado: #A47148 (Tostado cálido para alternancia de secciones)
+   - Transiciones & Microinteracciones:
+     * Curvas de Bézier personalizadas (`--ease-out-expo`, `--ease-spring`)
+     * Utilidades de animación Scroll Reveal con IntersectionObserver
+   ========================================================================== */
+
+:root {
+  /* Paleta cromática corporativa */
+  --bg-primary: #FAF6F0;          /* Fondo general crema */
+  --bg-surface: #FFFFFF;          /* Blanco puro para tarjetas */
+  --bg-section-alt: #F3EBE3;      /* Fondo alternativo tono cálido tostado */
+  --bg-dark-card: #15312C;        /* Fondo oscuro para tarjeta de alto contraste */
+
+  --text-main: #232323;           /* Texto oscuro principal */
+  --text-muted: #5A6266;          /* Texto secundario */
+  --text-light: #FFFFFF;          /* Texto claro */
+  --text-gold: #E5C39E;           /* Texto dorado sobre fondos oscuros */
+
+  --accent-primary: #1F4741;      /* Verde azulado profundo */
+  --accent-primary-hover: #14312D;
+  --accent-primary-light: rgba(31, 71, 65, 0.08);
+  --accent-primary-glow: rgba(31, 71, 65, 0.18);
+
+  --accent-secondary: #C99A6C;    /* Arena / Dorado apagado */
+  --accent-secondary-light: rgba(201, 154, 108, 0.15);
+
+  --accent-tostado: #A47148;      /* Tostado elegante para distinción de secciones */
+  --accent-tostado-hover: #8D5E37;
+  --accent-tostado-light: rgba(164, 113, 72, 0.1);
+  --accent-tostado-glow: rgba(164, 113, 72, 0.25);
+
+  --border-light: #E8E1D7;
+  --border-tostado: rgba(164, 113, 72, 0.28);
+  --border-glass: rgba(255, 255, 255, 0.6);
+
+  /* Tipografías */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Sombras y elevaciones (Depth System) */
+  --shadow-sm: 0 2px 8px rgba(35, 35, 35, 0.04);
+  --shadow-md: 0 10px 25px -4px rgba(35, 35, 35, 0.07), 0 4px 10px -2px rgba(35, 35, 35, 0.04);
+  --shadow-lg: 0 20px 35px -6px rgba(31, 71, 65, 0.12), 0 8px 16px -4px rgba(164, 113, 72, 0.08);
+  --shadow-glow: 0 0 25px var(--accent-tostado-glow);
+
+  /* Curvas de Bézier refinadas para UX */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Dimensiones */
+  --container-max-width: 1200px;
+  --header-height: 76px;
+}
+
+/* --------------------------------------------------------------------------
+   RESET Y BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   PLANTILLAS Y FONDOS DINÁMICOS
+   -------------------------------------------------------------------------- */
+/* Patrón de Malla de Puntos Geométrico (Dot Grid) */
+.bg-pattern-grid {
+  background-image: radial-gradient(rgba(164, 113, 72, 0.16) 1.2px, transparent 1.2px);
+  background-size: 26px 26px;
+}
+
+/* Fondo con degradado ambiental multicapa */
+.bg-mesh-hero {
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(201, 154, 108, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 10% 80%, rgba(31, 71, 65, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(250, 246, 240, 0.8) 0%, var(--bg-primary) 100%);
+}
+
+/* Fondo con textura sutil de líneas diagonales */
+.bg-pattern-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(164, 113, 72, 0.03) 0,
+    rgba(164, 113, 72, 0.03) 1px,
+    transparent 0,
+    transparent 16px
+  );
+}
+
+/* --------------------------------------------------------------------------
+   CONTENEDORES Y ESTRUCTURA DE SECCIÓN
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  padding: 5.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Secciones Alternadas con Distinción Tostada */
+.section-alt {
+  background-color: var(--bg-section-alt);
+  border-top: 1px solid var(--border-tostado);
+  border-bottom: 1px solid var(--border-tostado);
+}
+
+/* Encabezados de Sección */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3rem auto;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(164, 113, 72, 0.12);
+  border: 1px solid var(--border-tostado);
+  border-radius: 50px;
+  color: var(--accent-tostado);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  transition: var(--transition-fast);
+}
+
+.section-tag:hover {
+  background: rgba(164, 113, 72, 0.2);
+  transform: translateY(-1px);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 3.8vw, 2.75rem);
+  font-weight: 700;
+  color: var(--accent-primary);
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.divider {
+  width: 54px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent-tostado), transparent);
+  margin: 0.9rem auto 1.25rem auto;
+  border-radius: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   ANIMACIONES DE SCROLL (SCROLL REVEAL UTILITIES)
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.93);
+  transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+
+/* Estado activo cuando entra en el viewport */
+.reveal.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-scale.active {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Clases de retraso escalonado (Stagger Delays) */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* --------------------------------------------------------------------------
+   KEYFRAMES GLOBALES
+   -------------------------------------------------------------------------- */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(164, 113, 72, 0.2); }
+  50% { box-shadow: 0 0 28px rgba(164, 113, 72, 0.45); }
+}
+
+@keyframes shimmerEffect {
+  0% { transform: translateX(-100%) rotate(30deg); }
+  100% { transform: translateX(200%) rotate(30deg); }
+}
+
+/* Barra de Scroll Personalizada */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-tostado);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
