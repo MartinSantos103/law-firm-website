@@ -1,25 +1,25 @@
 /* ==========================================================================
-   DR. ALEJANDRO VALENZUELA - ABOGADO
-   CSS PRINCIPAL - SISTEMA DE DISEÑO UX/UI ELEVADO
+   ESTUDIO JURÍDICO - VALENZUELA & ASOCIADOS (SALTA)
+   CSS PRINCIPAL - SISTEMA DE DISEÑO CON PALETA DE INTERCALADO
    --------------------------------------------------------------------------
    DOCUMENTACIÓN TÉCNICA:
    - Paleta de diseño:
      * Fondo Base: #FAF6F0 (Crema cálido)
-     * Superficie: #FFFFFF (Blanco puro con elevaciones sutiles)
+     * Superficie: #FFFFFF (Blanco puro para tarjetas elevadas)
+     * Intercalado Suave: #EAE3D9 (Tono lino/arena suave neutro para transiciones sutiles)
+     * Fondo Tostado Alternado: #F3EBE3 (Tostado cálido moderado)
      * Texto: #232323 (Carbono oscuro)
      * Acento Principal: #1F4741 (Verde azulado profundo de prestigio)
      * Acento Secundario: #C99A6C (Arena / Dorado apagado)
-     * Acento Tostado: #A47148 (Tostado cálido para alternancia de secciones)
-   - Transiciones & Microinteracciones:
-     * Curvas de Bézier personalizadas (`--ease-out-expo`, `--ease-spring`)
-     * Utilidades de animación Scroll Reveal con IntersectionObserver
+     * Acento Tostado: #A47148 (Tostado cálido para distinciones)
    ========================================================================== */
 
 :root {
   /* Paleta cromática corporativa */
   --bg-primary: #FAF6F0;          /* Fondo general crema */
   --bg-surface: #FFFFFF;          /* Blanco puro para tarjetas */
-  --bg-section-alt: #F3EBE3;      /* Fondo alternativo tono cálido tostado */
+  --bg-section-alt: #F3EBE3;      /* Fondo alternativo tono tostado cálido */
+  --bg-section-linen: #EAE3D9;    /* Tono neutro suave lino para intercalar secciones */
   --bg-dark-card: #15312C;        /* Fondo oscuro para tarjeta de alto contraste */
 
   --text-main: #232323;           /* Texto oscuro principal */
@@ -35,20 +35,21 @@
   --accent-secondary: #C99A6C;    /* Arena / Dorado apagado */
   --accent-secondary-light: rgba(201, 154, 108, 0.15);
 
-  --accent-tostado: #A47148;      /* Tostado elegante para distinción de secciones */
+  --accent-tostado: #A47148;      /* Tostado elegante para distinción */
   --accent-tostado-hover: #8D5E37;
   --accent-tostado-light: rgba(164, 113, 72, 0.1);
   --accent-tostado-glow: rgba(164, 113, 72, 0.25);
 
   --border-light: #E8E1D7;
   --border-tostado: rgba(164, 113, 72, 0.28);
+  --border-linen: #DDD5C9;
   --border-glass: rgba(255, 255, 255, 0.6);
 
   /* Tipografías */
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
-  /* Sombras y elevaciones (Depth System) */
+  /* Sombras y elevaciones */
   --shadow-sm: 0 2px 8px rgba(35, 35, 35, 0.04);
   --shadow-md: 0 10px 25px -4px rgba(35, 35, 35, 0.07), 0 4px 10px -2px rgba(35, 35, 35, 0.04);
   --shadow-lg: 0 20px 35px -6px rgba(31, 71, 65, 0.12), 0 8px 16px -4px rgba(164, 113, 72, 0.08);
@@ -109,13 +110,11 @@ button, input, select, textarea {
 /* --------------------------------------------------------------------------
    PLANTILLAS Y FONDOS DINÁMICOS
    -------------------------------------------------------------------------- */
-/* Patrón de Malla de Puntos Geométrico (Dot Grid) */
 .bg-pattern-grid {
   background-image: radial-gradient(rgba(164, 113, 72, 0.16) 1.2px, transparent 1.2px);
   background-size: 26px 26px;
 }
 
-/* Fondo con degradado ambiental multicapa */
 .bg-mesh-hero {
   background: 
     radial-gradient(circle at 85% 15%, rgba(201, 154, 108, 0.18) 0%, transparent 45%),
@@ -123,7 +122,6 @@ button, input, select, textarea {
     radial-gradient(circle at 50% 50%, rgba(250, 246, 240, 0.8) 0%, var(--bg-primary) 100%);
 }
 
-/* Fondo con textura sutil de líneas diagonales */
 .bg-pattern-lines {
   background-image: repeating-linear-gradient(
     45deg,
@@ -135,7 +133,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   CONTENEDORES Y ESTRUCTURA DE SECCIÓN
+   CONTENEDORES Y ESTRUCTURA DE SECCIÓN CON INTERCALADO
    -------------------------------------------------------------------------- */
 .container {
   width: 100%;
@@ -153,17 +151,24 @@ button, input, select, textarea {
   overflow: hidden;
 }
 
-/* Secciones Alternadas con Distinción Tostada */
+/* Secciones Alternadas Tostadas */
 .section-alt {
   background-color: var(--bg-section-alt);
   border-top: 1px solid var(--border-tostado);
   border-bottom: 1px solid var(--border-tostado);
 }
 
+/* Secciones Intercaladas en Lino Suave Neutro */
+.section-linen {
+  background-color: var(--bg-section-linen);
+  border-top: 1px solid var(--border-linen);
+  border-bottom: 1px solid var(--border-linen);
+}
+
 /* Encabezados de Sección */
 .section-header {
   text-align: center;
-  max-width: 680px;
+  max-width: 720px;
   margin: 0 auto 3rem auto;
 }
 
@@ -214,7 +219,7 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   ANIMACIONES DE SCROLL (SCROLL REVEAL UTILITIES)
+   ANIMACIONES DE SCROLL (SCROLL REVEAL)
    -------------------------------------------------------------------------- */
 .reveal {
   opacity: 0;
@@ -244,7 +249,6 @@ button, input, select, textarea {
   will-change: opacity, transform;
 }
 
-/* Estado activo cuando entra en el viewport */
 .reveal.active,
 .reveal-left.active,
 .reveal-right.active,
@@ -253,7 +257,6 @@ button, input, select, textarea {
   transform: translate(0, 0) scale(1);
 }
 
-/* Clases de retraso escalonado (Stagger Delays) */
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
@@ -278,7 +281,7 @@ button, input, select, textarea {
   100% { transform: translateX(200%) rotate(30deg); }
 }
 
-/* Barra de Scroll Personalizada */
+/* Barra de Scroll */
 ::-webkit-scrollbar {
   width: 9px;
 }

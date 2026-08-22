@@ -1,14 +1,53 @@
 /* ==========================================================================
-   DR. ALEJANDRO VALENZUELA - ABOGADO
-   FORM HANDLER - CORREO ELECTRÓNICO & ESTIMADOR
+   ESTUDIO JURÍDICO - VALENZUELA & ASOCIADOS (SALTA)
+   FORM HANDLER & MAPA INTERACTIVO LEAFLET
    --------------------------------------------------------------------------
    DOCUMENTACIÓN TÉCNICA:
-   - Validación completa cliente: al presionar 'Enviar', si faltan datos requeridos, 
-     se marcan visualmente TODOS los campos omitidos (`.input-error`) y se muestra 
-     un resumen con las correcciones requeridas.
+   1. MAPA INTERACTIVO (LEAFLET.JS + OPENSTREETMAP):
+      - Herramienta: Leaflet.js v1.9.4 vía CDN.
+      - Ubicación: Centro de la Ciudad de Salta, Argentina (-24.7892, -65.4106).
+      - Ventajas: Ligero (<40KB), 100% responsivo, sin requerir API keys comerciales,
+        con marcador interactivo y popup informativo del estudio.
+   2. FORMULARIO DE CORREO:
+      - Validación completa de campos obligatorios (Nombre, Teléfono, Correo, Mensaje).
+      - Eliminación del campo 'Materia de la Consulta' según las especificaciones.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. INICIALIZACIÓN DEL MAPA INTERACTIVO DE SALTA
+  const mapContainer = document.getElementById('salta-map');
+  
+  if (mapContainer && typeof L !== 'undefined') {
+    try {
+      // Coordenadas del centro de Salta Capital (Plaza 9 de Julio / Casco Céntrico)
+      const saltaCoords = [-24.7892, -65.4106];
+      
+      const map = L.map('salta-map', {
+        center: saltaCoords,
+        zoom: 15,
+        scrollWheelZoom: false // Evitar que el scroll de la página quede atrapado por el mapa
+      });
+
+      // Capa de mapas OpenStreetMap con estilo limpio
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      // Marcador interactivo en la ubicación del despacho
+      const marker = L.marker(saltaCoords).addTo(map);
+      marker.bindPopup(`
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; text-align:center; padding:4px;">
+          <strong style="color:#1F4741; font-size:0.95rem;">Estudio Jurídico</strong><br>
+          <span style="color:#5A6266; font-size:0.82rem;">Av. Belgrano / Mitre, Centro<br>Salta Capital</span>
+        </div>
+      `).openPopup();
+    } catch (e) {
+      console.warn('Error al cargar el mapa Leaflet:', e);
+    }
+  }
+
+  // 2. CONTROL DEL FORMULARIO DE CORREO (SIN MATERIA DE CONSULTA)
   const contactForm = document.getElementById('contact-form');
   const formAlert = document.getElementById('form-alert');
   const submitBtn = document.getElementById('form-submit-btn');
@@ -17,14 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Referencias a los inputs
       const inputName = document.getElementById('input-name');
       const inputPhone = document.getElementById('input-phone');
       const inputEmail = document.getElementById('input-email');
-      const inputCaseType = document.getElementById('input-casetype');
       const inputMessage = document.getElementById('input-message');
 
-      // Limpiar estados de error previos
       const inputs = [inputName, inputPhone, inputEmail, inputMessage];
       inputs.forEach(input => {
         if (input) input.classList.remove('input-error');
@@ -32,7 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const missingFields = [];
 
-      // Validar cada campo requerido
       if (!inputName.value.trim()) {
         inputName.classList.add('input-error');
         missingFields.push('Nombre y Apellido');
@@ -50,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         missingFields.push('Correo Electrónico');
       } else if (!emailRegex.test(emailValue)) {
         inputEmail.classList.add('input-error');
-        missingFields.push('Formato de Correo Electrónico Válido');
+        missingFields.push('Formato de Correo Válido');
       }
 
       if (!inputMessage.value.trim()) {
@@ -58,19 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
         missingFields.push('Detalle de la Consulta');
       }
 
-      // Si hay errores, mostrar mensaje consolidados y hacer foco en el primero
       if (missingFields.length > 0) {
         showAlert(`Por favor completa los siguientes campos obligatorios: ${missingFields.join(', ')}.`, 'error');
-        
-        // Hacer scroll al primer campo con error
         const firstErrorField = contactForm.querySelector('.input-error');
-        if (firstErrorField) {
-          firstErrorField.focus();
-        }
+        if (firstErrorField) firstErrorField.focus();
         return;
       }
 
-      // Proceso de envío de Correo Electrónico
+      // Proceso de envío
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando Mensaje...';
 
@@ -78,9 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         Nombre: inputName.value.trim(),
         Telefono: inputPhone.value.trim(),
         Email: emailValue,
-        Materia: inputCaseType ? inputCaseType.value : 'General',
         Mensaje: inputMessage.value.trim(),
-        _subject: `Consulta Web Legal: ${inputName.value.trim()}`
+        _subject: `Consulta Web - Estudio Jurídico Salta: ${inputName.value.trim()}`
       };
 
       fetch('https://formsubmit.co/ajax/contacto@valenzuelaabogados.com', {
@@ -93,11 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(res => res.json())
       .then(data => {
-        showAlert('Su mensaje ha sido enviado correctamente. El Dr. Valenzuela responderá a la brevedad por correo electrónico.', 'success');
+        showAlert('Su mensaje ha sido enviado correctamente. Un profesional del estudio se comunicará a la brevedad.', 'success');
         contactForm.reset();
       })
       .catch(err => {
-        showAlert('Su mensaje ha sido registrado exitosamente. Nos pondremos en contacto a la brevedad.', 'success');
+        showAlert('Su consulta ha sido registrada exitosamente. Nos pondremos en contacto a la brevedad.', 'success');
         contactForm.reset();
       })
       .finally(() => {
@@ -106,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Quitar borde de error al escribir en un input
     contactForm.querySelectorAll('.form-control').forEach(field => {
       field.addEventListener('input', () => {
         field.classList.remove('input-error');
@@ -121,59 +149,5 @@ document.addEventListener('DOMContentLoaded', () => {
       ? `<i class="fas fa-check-circle"></i> <span>${msg}</span>`
       : `<i class="fas fa-exclamation-circle"></i> <span>${msg}</span>`;
     formAlert.style.display = 'flex';
-  }
-
-  // 2. ESTIMADOR DE CONSULTA
-  const calcArea = document.getElementById('calc-area');
-  const calcUrgency = document.getElementById('calc-urgency');
-  const summaryAreaText = document.getElementById('summary-area');
-  const summaryUrgencyText = document.getElementById('summary-urgency');
-  const calcCtaBtn = document.getElementById('calc-cta-btn');
-
-  function updateCalculator() {
-    if (!calcArea || !calcUrgency) return;
-
-    const areaText = calcArea.options[calcArea.selectedIndex].text;
-    const urgencyValue = calcUrgency.value;
-
-    if (summaryAreaText) summaryAreaText.innerText = areaText;
-
-    let urgencyLabel = 'Normal (24 hs)';
-    if (urgencyValue === 'alta') urgencyLabel = 'Prioritaria (Mismo Día)';
-    if (urgencyValue === 'urgente') urgencyLabel = 'Urgencia Inmediata';
-
-    if (summaryUrgencyText) summaryUrgencyText.innerText = urgencyLabel;
-  }
-
-  if (calcArea && calcUrgency) {
-    calcArea.addEventListener('change', updateCalculator);
-    calcUrgency.addEventListener('change', updateCalculator);
-  }
-
-  if (calcCtaBtn) {
-    calcCtaBtn.addEventListener('click', () => {
-      const areaText = calcArea.options[calcArea.selectedIndex].text;
-
-      const inputCaseType = document.getElementById('input-casetype');
-      const inputMessage = document.getElementById('input-message');
-
-      if (inputCaseType) {
-        for (let opt of inputCaseType.options) {
-          if (opt.text.toLowerCase().includes(areaText.toLowerCase())) {
-            inputCaseType.value = opt.value;
-            break;
-          }
-        }
-      }
-
-      if (inputMessage) {
-        inputMessage.value = `Deseo solicitar asesoramiento legal sobre ${areaText}.`;
-      }
-
-      const contactSection = document.getElementById('contacto');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
   }
 });

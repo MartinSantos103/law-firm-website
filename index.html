@@ -5,32 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   
-  <title>Dr. Alejandro Valenzuela | Abogado</title>
-  <meta name="description" content="Asesoramiento y representación legal profesional en Derecho Civil, Corporativo, Laboral, Penal y de Familia. Atención personalizada y confidencial.">
-  <meta name="author" content="Dr. Alejandro Valenzuela">
+  <title>Estudio Jurídico | Asesoramiento & Defensa Legal en Salta</title>
+  <meta name="description" content="Estudio Jurídico en Salta Capital. Asesoramiento integral y representación legal especializada en Derecho Penal, Civil, Comercial, Laboral y de Familia. Consultas presenciales y virtuales.">
+  <meta name="author" content="Estudio Jurídico">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Dr. Alejandro Valenzuela | Abogado">
-  <meta property="og:description" content="Asesoramiento legal profesional en Derecho Civil, Comercial y Penal. Contacto directo vía correo o WhatsApp.">
-  <meta property="og:image" content="assets/images/attorney_portrait.png">
+  <meta property="og:title" content="Estudio Jurídico | Asesoramiento Legal en Salta">
+  <meta property="og:description" content="Servicios jurídicos integrales en Salta. Atención personalizada en Derecho Penal, Civil y Familia.">
+  <meta property="og:image" content="assets/images/law_firm_team.jpg">
 
-  <!-- Schema.org JSON-LD -->
+  <!-- Schema.org JSON-LD (SEO Local Salta) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Attorney",
-    "name": "Dr. Alejandro Valenzuela - Abogado",
-    "image": "assets/images/attorney_portrait.png",
+    "@type": "LegalService",
+    "name": "Estudio Jurídico",
+    "image": "assets/images/law_firm_team.jpg",
     "url": "https://www.valenzuelaabogados.com/",
-    "telephone": "+5491130005555",
+    "telephone": "+5493874005555",
     "email": "contacto@valenzuelaabogados.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Av. Corrientes 1450, Piso 8",
-      "addressLocality": "Ciudad Autónoma de Buenos Aires",
+      "streetAddress": "Av. Belgrano / Mitre 150",
+      "addressLocality": "Ciudad de Salta",
+      "addressRegion": "Salta",
       "addressCountry": "AR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -24.7892,
+      "longitude": -65.4106
     }
   }
   </script>
@@ -40,8 +46,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- FontAwesome Vector Icons -->
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Leaflet.js CSS (Mapa Interactivo Open-Source de Salta) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <!-- Hojas de Estilos CSS Puro -->
   <link rel="stylesheet" href="css/main.css">
@@ -52,7 +61,6 @@
 <body>
   <!-- ==========================================================================
        1. ENCABEZADO Y BARRA DE NAVEGACIÓN INTELIGENTE (SMART NAVBAR)
-       Se oculta suavemente al hacer scroll hacia abajo y reaparece al subir.
        ========================================================================== -->
   <header class="header" id="main-header">
     <div class="container nav-container">
@@ -60,20 +68,20 @@
         <div class="brand-icon">
           <i class="fas fa-balance-scale"></i>
         </div>
-        <div>
-          DR. ALEJANDRO VALENZUELA
+        <div class="brand-text">
+          <span class="brand-title">ESTUDIO JURÍDICO</span>
+          <span class="brand-sub">SALTA &bull; ARGENTINA</span>
         </div>
       </a>
 
       <nav aria-label="Navegación principal">
         <ul class="nav-menu" id="nav-menu">
           <li><a href="#hero" class="nav-link active">Inicio</a></li>
-          <li><a href="#sobre-mi" class="nav-link">Sobre Mí</a></li>
+          <li><a href="#estudio" class="nav-link">El Estudio</a></li>
           <li><a href="#areas" class="nav-link">Áreas de Práctica</a></li>
-          <li><a href="#calculadora" class="nav-link">Estimador</a></li>
-          <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+          <li><a href="#equipo" class="nav-link">Equipo</a></li>
           <li><a href="#faq" class="nav-link">Preguntas Frecuentes</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto y Ubicación</a></li>
         </ul>
       </nav>
 
@@ -85,22 +93,22 @@
 
   <main>
     <!-- ==========================================================================
-         2. HERO SECTION (PORTADA DINÁMICA CON PATRÓN Y AURA AMBIENTAL)
+         2. HERO SECTION (ESTUDIO JURÍDICO EN SALTA)
          ========================================================================== -->
     <section class="hero bg-mesh-hero bg-pattern-grid" id="hero">
       <div class="container hero-grid">
         <div class="hero-content reveal-left">
           <div class="section-tag">
-            <i class="fas fa-shield-alt"></i> Práctica Jurídica Personalizada
+            <i class="fas fa-balance-scale"></i> Firma Jurídica &bull; Salta Capital
           </div>
-          <h1>Defensa Estratégica & <br><span class="accent-text">Asesoría Legal Profesional</span></h1>
+          <h1>Asesoría Legal Integral & <br><span class="accent-text">Defensa Estratégica</span></h1>
           <p class="hero-description">
-            Representación jurídica integral y orientada a resultados. Asesoramiento riguroso, confidencialidad absoluta y un trato directo enfocado en resguardar sus derechos e intereses.
+            Brindamos representación y asesoramiento legal riguroso en Derecho Penal, Civil, Comercial y de Familia. Atención personalizada con sede en la Ciudad de Salta y consultas virtuales para todo el interior.
           </p>
 
           <div class="hero-cta-group">
             <a href="#contacto" class="btn btn-primary">
-              <i class="fas fa-envelope"></i> Contactar por Correo
+              <i class="fas fa-envelope"></i> Contactar al Estudio
             </a>
             <a href="#areas" class="btn btn-secondary">
               <i class="fas fa-gavel"></i> Áreas de Práctica
@@ -110,15 +118,15 @@
 
         <div class="hero-image-wrapper reveal-right delay-2">
           <div class="hero-image-container">
-            <img src="assets/images/attorney_portrait.png" alt="Dr. Alejandro Valenzuela - Abogado" width="400" height="500">
+            <img src="assets/images/Img-Inicio.png" alt="Equipo de Abogados del Estudio Jurídico" width="420" height="480">
           </div>
           <div class="floating-badge">
             <div class="badge-icon-box">
-              <i class="fas fa-user-check"></i>
+              <i class="fas fa-landmark"></i>
             </div>
             <div>
-              <div class="badge-text-title">Dr. Alejandro Valenzuela</div>
-              <div class="badge-text-sub">Abogado Titular</div>
+              <div class="badge-text-title">Estudio Jurídico</div>
+              <div class="badge-text-sub">Salta, Argentina</div>
             </div>
           </div>
         </div>
@@ -126,47 +134,47 @@
     </section>
 
     <!-- ==========================================================================
-         3. SOBRE EL ABOGADO (SECCIÓN TOSTADA CON TEXTURA)
+         3. EL ESTUDIO (SECCIÓN TOSTADA INTERCALADA)
          ========================================================================== -->
-    <section class="section section-alt bg-pattern-lines" id="sobre-mi">
+    <section class="section section-alt bg-pattern-lines" id="estudio">
       <div class="container about-grid">
         <div class="about-image-card reveal-left">
-          <img src="assets/images/office_interior.png" alt="Despacho del Dr. Alejandro Valenzuela">
+          <img src="assets/images/office_interior.png" alt="Despacho del Estudio Jurídico en Salta">
         </div>
 
         <div class="about-text reveal-right delay-1">
           <div class="section-tag">
-            <i class="fas fa-university"></i> Trayectoria & Valores
+            <i class="fas fa-shield-alt"></i> Vocación & Compromiso
           </div>
-          <h2 class="section-title" style="text-align: left;">Compromiso Técnico y Trato Humano</h2>
+          <h2 class="section-title" style="text-align: left;">Respaldo Profesional, Ética y Eficacia</h2>
           <div class="divider" style="margin-left: 0;"></div>
           <p style="color: var(--text-muted); margin-bottom: 1rem;">
-            El <strong>Dr. Alejandro Valenzuela</strong> es Abogado egresado de la Facultad de Derecho de la Universidad de Buenos Aires (UBA), con formación continua en Derecho Procesal y Estrategias de Litigación.
+            Nuestro estudio reúne a profesionales especializados con sólida experiencia en los fueros penal, civil, comercial y de familia en la Provincia de Salta y tribunales federales.
           </p>
           <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
-            Brinda asesoramiento especializado a particulares y emprendimientos, garantizando seguimiento personalizado de cada caso, transparencia procesal y búsqueda activa de soluciones eficientes.
+            Trabajamos con un enfoque preventivo y litigioso, priorizando acuerdos extrajudiciales cuando resultan convenientes para el cliente y ejerciendo una defensa técnica firme ante los tribunales de justicia.
           </p>
 
           <div class="about-features">
             <div class="feature-box reveal delay-1">
               <i class="fas fa-user-shield"></i>
               <h4>Secreto Profesional</h4>
-              <p>Absoluta reserva y confidencialidad garantizadas en cada consulta.</p>
+              <p>Confidencialidad rigurosa en cada expediente y consulta.</p>
             </div>
             <div class="feature-box reveal delay-2">
-              <i class="fas fa-handshake"></i>
-              <h4>Atención Directa</h4>
-              <p>Comunicación clara y seguimiento continuo sin intermediarios.</p>
+              <i class="fas fa-laptop-house"></i>
+              <h4>Modalidad Presencial y Online</h4>
+              <p>Atención en Salta Capital y videollamadas para el interior.</p>
             </div>
             <div class="feature-box reveal delay-3">
-              <i class="fas fa-graduation-cap"></i>
-              <h4>Formación Rigurosa</h4>
-              <p>Actualización permanente en doctrina y jurisprudencia aplicable.</p>
+              <i class="fas fa-balance-scale"></i>
+              <h4>Enfoque Estratégico</h4>
+              <p>Análisis exhaustivo para prevenir contingencias y costos.</p>
             </div>
             <div class="feature-box reveal delay-4">
-              <i class="fas fa-balance-scale"></i>
-              <h4>Estrategia a Medida</h4>
-              <p>Análisis exhaustivo enfocado en la mejor alternativa procesal.</p>
+              <i class="fas fa-handshake"></i>
+              <h4>Acompañamiento Constante</h4>
+              <p>Información clara y transparente del avance procesal.</p>
             </div>
           </div>
         </div>
@@ -174,80 +182,97 @@
     </section>
 
     <!-- ==========================================================================
-         4. ÁREAS DE PRÁCTICA (FILTROS DINÁMICOS Y TARJETAS INTERACTIVAS)
+         4. ÁREAS DE PRÁCTICA (PANEL DESLIZABLE & SELECTOR DE BÚSQUEDA)
          ========================================================================== -->
     <section class="section bg-pattern-grid" id="areas">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-tag">
-            <i class="fas fa-briefcase"></i> Especialidades
+            <i class="fas fa-briefcase"></i> Especialidades Jurídicas
           </div>
-          <h2 class="section-title">Áreas de Práctica</h2>
+          <h2 class="section-title">Nuestras Áreas de Práctica</h2>
           <div class="divider"></div>
-          <p class="section-subtitle">Servicios legales adaptados a sus requerimientos personales o comerciales.</p>
+          <p class="section-subtitle">Seleccione una especialidad en el panel para filtrar las materias de actuación del estudio.</p>
         </div>
 
-        <div class="filter-tabs reveal delay-1">
-          <button class="filter-btn active" data-filter="all">Todas las Áreas</button>
-          <button class="filter-btn" data-filter="civil">Derecho Civil</button>
-          <button class="filter-btn" data-filter="corporativo">Corporativo & Empresa</button>
-          <button class="filter-btn" data-filter="laboral">Derecho Laboral</button>
-          <button class="filter-btn" data-filter="penal">Derecho Penal</button>
-          <button class="filter-btn" data-filter="familia">Familia & Sucesiones</button>
+        <!-- Selector de Búsqueda Deslizable -->
+        <div class="practice-selector-container reveal delay-1">
+          <button type="button" class="practice-search-toggle-btn" id="practice-search-toggle-btn" aria-expanded="false" aria-controls="practice-drawer-panel">
+            <i class="fas fa-filter"></i>
+            <span>Búsqueda: <strong id="current-filter-label" style="color:var(--accent-tostado);">Todas las Áreas</strong></span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <div class="practice-drawer-panel" id="practice-drawer-panel">
+            <div class="filter-tabs">
+              <button class="filter-btn active" data-filter="all">Todas las Áreas</button>
+              <button class="filter-btn" data-filter="penal">Derecho Penal</button>
+              <button class="filter-btn" data-filter="civil">Derecho Civil & Comercial</button>
+              <button class="filter-btn" data-filter="familia">Familia & Sucesiones</button>
+              <button class="filter-btn" data-filter="laboral">Derecho Laboral</button>
+              <button class="filter-btn" data-filter="corporativo">Corporativo & PyMEs</button>
+            </div>
+          </div>
         </div>
 
+        <!-- Grid de Áreas de Práctica -->
         <div class="practice-grid">
-          <article class="practice-card reveal delay-1" data-category="civil">
-            <div>
-              <div class="practice-icon"><i class="fas fa-file-contract"></i></div>
-              <h3>Derecho Civil & Comercial</h3>
-              <p>Redacción de contratos, reclamos patrimoniales, cobro ejecutivo de deudas y resolución de controversias civiles.</p>
-            </div>
-            <a class="practice-link" data-practice="civil">
-              Ver detalles <i class="fas fa-arrow-right"></i>
-            </a>
-          </article>
-
-          <article class="practice-card reveal delay-2" data-category="corporativo">
-            <div>
-              <div class="practice-icon"><i class="fas fa-building"></i></div>
-              <h3>Derecho Corporativo & Empresa</h3>
-              <p>Asesoramiento preventivo a pymes, constitución de sociedades, pactos entre socios y convenios comerciales.</p>
-            </div>
-            <a class="practice-link" data-practice="corporativo">
-              Ver detalles <i class="fas fa-arrow-right"></i>
-            </a>
-          </article>
-
-          <article class="practice-card reveal delay-3" data-category="laboral">
-            <div>
-              <div class="practice-icon"><i class="fas fa-briefcase"></i></div>
-              <h3>Derecho Laboral</h3>
-              <p>Patrocinio en situaciones de despido, acuerdos indemnizatorios, accidentes de trabajo y mediaciones laborales.</p>
-            </div>
-            <a class="practice-link" data-practice="laboral">
-              Ver detalles <i class="fas fa-arrow-right"></i>
-            </a>
-          </article>
-
-          <article class="practice-card reveal delay-4" data-category="penal">
+          <!-- Penal -->
+          <article class="practice-card reveal delay-1" data-category="penal">
             <div>
               <div class="practice-icon"><i class="fas fa-gavel"></i></div>
               <h3>Derecho Penal & Defensas</h3>
-              <p>Representación técnica en procesos penales, querellas particulares, defensas y recursos judiciales.</p>
+              <p>Defensa técnica en audiencias, querellas particulares, excarcelaciones, hábeas corpus y asistencia inmediata ante urgencias penales.</p>
             </div>
             <a class="practice-link" data-practice="penal">
               Ver detalles <i class="fas fa-arrow-right"></i>
             </a>
           </article>
 
-          <article class="practice-card reveal delay-5" data-category="familia">
+          <!-- Civil -->
+          <article class="practice-card reveal delay-2" data-category="civil">
+            <div>
+              <div class="practice-icon"><i class="fas fa-file-contract"></i></div>
+              <h3>Derecho Civil & Comercial</h3>
+              <p>Redacción de contratos, juicios por daños y perjuicios, reclamos por incumplimiento, desalojos y ejecuciones de títulos.</p>
+            </div>
+            <a class="practice-link" data-practice="civil">
+              Ver detalles <i class="fas fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Familia -->
+          <article class="practice-card reveal delay-3" data-category="familia">
             <div>
               <div class="practice-icon"><i class="fas fa-users"></i></div>
               <h3>Familia & Sucesiones</h3>
-              <p>Tramitación de juicios sucesorios, división de bienes, convenios de divorcio y acuerdos parentales.</p>
+              <p>Tramitación de juicios sucesorios, división de bienes, convenios de divorcio, cuotas alimentarias y responsabilidad parental.</p>
             </div>
             <a class="practice-link" data-practice="familia">
+              Ver detalles <i class="fas fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Laboral -->
+          <article class="practice-card reveal delay-4" data-category="laboral">
+            <div>
+              <div class="practice-icon"><i class="fas fa-briefcase"></i></div>
+              <h3>Derecho Laboral</h3>
+              <p>Asesoramiento y patrocinio en despidos, diferencias salariales, accidentes de trabajo (ART) y mediaciones en sede administrativa.</p>
+            </div>
+            <a class="practice-link" data-practice="laboral">
+              Ver detalles <i class="fas fa-arrow-right"></i>
+            </a>
+          </article>
+
+          <!-- Corporativo -->
+          <article class="practice-card reveal delay-5" data-category="corporativo">
+            <div>
+              <div class="practice-icon"><i class="fas fa-building"></i></div>
+              <h3>Derecho Corporativo & PyMEs</h3>
+              <p>Constitución de sociedades, estructuración societaria, acuerdos entre socios y consultoría preventiva para empresas.</p>
+            </div>
+            <a class="practice-link" data-practice="corporativo">
               Ver detalles <i class="fas fa-arrow-right"></i>
             </a>
           </article>
@@ -256,162 +281,137 @@
     </section>
 
     <!-- ==========================================================================
-         5. ESTIMADOR DE CONSULTA LEGAL (TARJETA EJECUTIVA)
+         5. EQUIPO DE PROFESIONALES (INTERCALADO EN TONO LINO SUAVE NEUTRO)
          ========================================================================== -->
-    <section class="section section-alt bg-pattern-lines" id="calculadora">
+    <section class="section section-linen bg-pattern-lines" id="equipo">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-tag">
-            <i class="fas fa-calculator"></i> Orientación Rápida
+            <i class="fas fa-user-tie"></i> Profesionales
           </div>
-          <h2 class="section-title">Estimador de Consulta Legal</h2>
+          <h2 class="section-title">Equipo de Abogados</h2>
           <div class="divider"></div>
-          <p class="section-subtitle">Seleccione la materia y urgencia de su inquietud para coordinar el contacto inicial.</p>
+          <p class="section-subtitle">Profesionales especializados en distintas ramas del derecho para un abordaje integral.</p>
         </div>
 
-        <div class="calculator-box reveal-scale delay-1">
-          <div class="calc-grid">
-            <div class="calc-inputs">
-              <div class="form-group">
-                <label for="calc-area">Materia Legal:</label>
-                <select id="calc-area" class="form-control">
-                  <option value="civil">Derecho Civil & Reclamaciones</option>
-                  <option value="corporativo">Derecho Corporativo / Empresa</option>
-                  <option value="laboral">Derecho Laboral</option>
-                  <option value="penal">Derecho Penal</option>
-                  <option value="familia">Familia & Sucesiones</option>
-                </select>
-              </div>
+        <div class="team-grid">
+          <!-- Abogado 1 -->
+          <div class="team-card reveal delay-1">
+            <div class="team-avatar">AV</div>
+            <h3>Dr. Alejandro Valenzuela</h3>
+            <div class="team-role">Derecho Penal & Litigios</div>
+            <p class="team-desc">Especialista en Derecho Procesal Penal y litigación en juicio. Amplia trayectoria en tribunales de Salta.</p>
+            <span class="team-badge">Socio Fundador</span>
+          </div>
 
-              <div class="form-group">
-                <label for="calc-urgency">Nivel de Urgencia:</label>
-                <select id="calc-urgency" class="form-control">
-                  <option value="normal">Consulta General (Respuesta en 24hs)</option>
-                  <option value="alta">Prioritaria (Mismo día)</option>
-                  <option value="urgente">Urgencia Inmediata</option>
-                </select>
-              </div>
-            </div>
+          <!-- Abogado 2 -->
+          <div class="team-card reveal delay-2">
+            <div class="team-avatar">ML</div>
+            <h3>Dra. Marcela Lozano</h3>
+            <div class="team-role">Derecho de Familia & Sucesiones</div>
+            <p class="team-desc">Especializada en mediación familiar, división patrimonial y convenios de responsabilidad parental.</p>
+            <span class="team-badge">Especialista Senior</span>
+          </div>
 
-            <div class="calc-summary">
-              <div>
-                <div class="summary-title"><i class="fas fa-file-invoice"></i> Resumen Orientativo</div>
-                <div class="summary-details">
-                  <p>Materia: <strong id="summary-area">Derecho Civil & Reclamaciones</strong></p>
-                  <p>Prioridad: <strong id="summary-urgency">Normal (24 hs)</strong></p>
-                </div>
-              </div>
-              <button id="calc-cta-btn" class="btn btn-tostado btn-block" style="margin-top: 1.25rem;">
-                <i class="fas fa-envelope"></i> Completar Formulario de Contacto
-              </button>
-            </div>
+          <!-- Abogado 3 -->
+          <div class="team-card reveal delay-3">
+            <div class="team-avatar">FR</div>
+            <h3>Dr. Federico Ramos</h3>
+            <div class="team-role">Derecho Civil & Comercial</div>
+            <p class="team-desc">Auditoría contractual, reclamos por daños y perjuicios y cobranzas ejecutivas de alta complejidad.</p>
+            <span class="team-badge">Especialista Senior</span>
+          </div>
+
+          <!-- Abogado 4 -->
+          <div class="team-card reveal delay-4">
+            <div class="team-avatar">SG</div>
+            <h3>Dra. Sofía Giménez</h3>
+            <div class="team-role">Derecho Laboral & PyMEs</div>
+            <p class="team-desc">Asesoramiento preventivo en relaciones de trabajo, indemnizaciones y mediaciones laborales.</p>
+            <span class="team-badge">Asociada</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==========================================================================
-         6. TESTIMONIOS (RESEÑAS CON COMILLAS DECORATIVAS)
+         6. PREGUNTAS FRECUENTES (ACTUALIZADAS EXACTAS)
          ========================================================================== -->
-    <section class="section bg-pattern-grid" id="testimonios">
+    <section class="section section-alt bg-pattern-grid" id="faq">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-tag">
-            <i class="fas fa-star"></i> Experiencias
-          </div>
-          <h2 class="section-title">Testimonios de Clientes</h2>
-          <div class="divider"></div>
-          <p class="section-subtitle">Opiniones y vivencias de quienes han confiado en el patrocinio profesional.</p>
-        </div>
-
-        <div class="testimonials-grid">
-          <article class="testimonial-card reveal delay-1">
-            <div class="stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-quote">"El Dr. Valenzuela me asesoró en un conflicto contractual delicado. Su claridad y constante comunicación me dieron mucha tranquilidad durante todo el proceso."</p>
-            <div class="client-info">
-              <div class="client-avatar">RM</div>
-              <div class="client-details">
-                <h4>Roberto Méndez</h4>
-                <span>Caso Comercial</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="testimonial-card reveal delay-2">
-            <div class="stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-quote">"Trato muy profesional y humano. Llevó el juicio sucesorio de mi familia de manera rápida y sin complicaciones innecesarias."</p>
-            <div class="client-info">
-              <div class="client-avatar">CP</div>
-              <div class="client-details">
-                <h4>Carolina Peralta</h4>
-                <span>Juicio Sucesorio</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="testimonial-card reveal delay-3">
-            <div class="stars">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="testimonial-quote">"Excelente atención técnica en una mediación laboral. Se alcanzó un acuerdo satisfactorio en poco tiempo y con total transparencia."</p>
-            <div class="client-info">
-              <div class="client-avatar">GA</div>
-              <div class="client-details">
-                <h4>Gonzalo Alonso</h4>
-                <span>Mediación Laboral</span>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         7. PREGUNTAS FRECUENTES (ACORDEÓN ACCESIBLE)
-         ========================================================================== -->
-    <section class="section section-alt bg-pattern-lines" id="faq">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="section-tag">
-            <i class="fas fa-question-circle"></i> Dudas Frecuentes
+            <i class="fas fa-question-circle"></i> Respuestas Claras
           </div>
           <h2 class="section-title">Preguntas Frecuentes</h2>
           <div class="divider"></div>
-          <p class="section-subtitle">Respuestas a inquietudes habituales sobre el proceso de consulta y atención.</p>
+          <p class="section-subtitle">Información orientativa para coordinar su consulta y comprender el proceso de atención.</p>
         </div>
 
         <div class="accordion-wrapper reveal-scale delay-1">
+          <!-- FAQ 1 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>¿Cómo se coordina la primera consulta?</span>
+              <span>1. ¿Qué áreas del derecho abarca el estudio y cómo puedo asesorarme?</span>
               <i class="fas fa-chevron-down accordion-icon"></i>
             </button>
             <div class="accordion-body">
-              <p>Puede enviar su inquietud completando el formulario de contacto o comunicándose por correo electrónico o WhatsApp. Nos pondremos en contacto para evaluar los antecedentes y coordinar una reunión presencial o virtual según corresponda.</p>
+              <p>Brindamos asesoramiento integral y representación legal en derecho penal, civil y de familia. Puedes coordinar una consulta presencial en Salta o de forma virtual contactándonos a través de nuestro formulario, teléfono o WhatsApp.</p>
             </div>
           </div>
 
+          <!-- FAQ 2 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>¿Cómo se establecen los honorarios?</span>
+              <span>2. ¿Qué documentación debo tener para mi primera consulta?</span>
               <i class="fas fa-chevron-down accordion-icon"></i>
             </button>
             <div class="accordion-body">
-              <p>Los honorarios se acuerdan de manera clara y transparente mediante convenio previo, de acuerdo a la normativa y aranceles profesionales vigentes.</p>
+              <p>Te sugerimos tener a mano tu DNI y cualquier documento relevante para tu caso (actas, denuncias, notificaciones o cartas documento). Si no cuentas con toda la documentación, no te preocupes: en la consulta te orientaremos sobre cómo obtenerla.</p>
             </div>
           </div>
 
+          <!-- FAQ 3 -->
           <div class="accordion-item">
             <button class="accordion-header" aria-expanded="false">
-              <span>¿Es posible realizar seguimiento a distancia?</span>
+              <span>3. ¿Qué debo hacer si recibo una citación judicial o tengo una urgencia legal?</span>
               <i class="fas fa-chevron-down accordion-icon"></i>
             </button>
             <div class="accordion-body">
-              <p>Sí, brindamos actualizaciones periódicas por correo electrónico y mensajería sobre el estado de su trámite o causa judicial sin necesidad de traslados constantes.</p>
+              <p>Si recibiste una citación, notificación o te enfrentas a una urgencia (como una detención o denuncia), te recomendamos contactarnos de inmediato. Tomar decisiones asesoradas desde el primer momento es vital para evitar errores y definir la mejor estrategia procesal.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              <span>4. ¿En qué momento es recomendable acudir a un abogado de familia?</span>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p>Lo ideal es consultar ante las primeras dudas sobre temas sensibles como divorcios, cuotas alimentarias, régimen de comunicación o acuerdos patrimoniales. Un asesoramiento preventivo mejora las probabilidades de alcanzar acuerdos justos y sostenibles en el tiempo.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              <span>5. ¿Es obligatorio ir a juicio para resolver un conflicto?</span>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p>No siempre. En muchos casos civiles y de familia (e incluso en algunas instancias penales), priorizamos la mediación y los acuerdos extrajudiciales. Un buen acuerdo evita el desgaste emocional, reduce costos y acorta significativamente los tiempos de resolución.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              <span>6. ¿Atienden consultas online para personas que no residen en la ciudad?</span>
+              <i class="fas fa-chevron-down accordion-icon"></i>
+            </button>
+            <div class="accordion-body">
+              <p>Sí, ofrecemos consultas virtuales mediante videollamada para clientes del interior de la provincia o de otras ciudades. Si el avance de tu caso requiere trámites presenciales o firma de documentos físicos, lo coordinaremos de manera organizada.</p>
             </div>
           </div>
         </div>
@@ -419,29 +419,29 @@
     </section>
 
     <!-- ==========================================================================
-         8. CONTACTO POR EMAIL & NÚMERO ESTÁTICO DE WHATSAPP
+         7. DATOS DE CONTACTO Y UBICACIÓN + MAPA INTERACTIVO DE SALTA
          ========================================================================== -->
     <section class="section bg-mesh-hero bg-pattern-grid" id="contacto">
       <div class="container">
         <div class="section-header reveal">
           <div class="section-tag">
-            <i class="fas fa-envelope-open-text"></i> Canales de Comunicación
+            <i class="fas fa-map-marked-alt"></i> Despacho & Consultas
           </div>
-          <h2 class="section-title">Contacto Profesional</h2>
+          <h2 class="section-title">Datos de Contacto y Ubicación</h2>
           <div class="divider"></div>
-          <p class="section-subtitle">Complete el formulario para enviar su consulta por correo electrónico o comuníquese a los datos indicados.</p>
+          <p class="section-subtitle">Envíenos su consulta por correo o comuníquese a través de nuestros canales directos en Salta Capital.</p>
         </div>
 
         <div class="contact-grid">
-          <!-- Datos de Contacto Directo -->
+          <!-- Columna 1: Datos de Contacto + Mapa Interactivo Leaflet -->
           <div class="contact-info-card reveal-left delay-1">
-            <h3 style="font-family: var(--font-serif); color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 1.5rem;">Datos de Contacto</h3>
+            <h3 style="font-family: var(--font-serif); color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 1.35rem;">Despacho Jurídico</h3>
             
             <div class="info-item">
               <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
               <div class="info-text">
-                <h4>Dirección del Despacho</h4>
-                <p>Av. Corrientes 1450, Piso 8<br>Ciudad Autónoma de Buenos Aires</p>
+                <h4>Dirección del Estudio</h4>
+                <p>Av. Belgrano / Mitre 150, Centro<br>Ciudad de Salta, Provincia de Salta</p>
               </div>
             </div>
 
@@ -459,7 +459,7 @@
                 <h4>Contacto vía WhatsApp (Línea directa)</h4>
                 <p style="margin-bottom:0.35rem;">Para comunicarse o enviar mensajes por WhatsApp:</p>
                 <div class="wa-static-badge">
-                  <i class="fab fa-whatsapp"></i> +54 9 11 3000-5555
+                  <i class="fab fa-whatsapp"></i> +54 9 387 400-5555
                 </div>
               </div>
             </div>
@@ -468,12 +468,21 @@
               <div class="info-icon"><i class="fas fa-clock"></i></div>
               <div class="info-text">
                 <h4>Horarios de Atención</h4>
-                <p>Lunes a Viernes: 09:00 a 18:00 hs</p>
+                <p>Lunes a Viernes: 08:30 a 19:30 hs<br><small style="color:var(--accent-tostado); font-weight:600;">Guardia Penal / Urgencias: 24 hs</small></p>
               </div>
+            </div>
+
+            <!-- Mapa Interactivo Leaflet.js -->
+            <div class="map-container-box">
+              <div class="map-header-label">
+                <i class="fas fa-map-pin" style="color:var(--accent-tostado);"></i>
+                <span>Ubicación en el Centro de Salta (Interactivo)</span>
+              </div>
+              <div id="salta-map"></div>
             </div>
           </div>
 
-          <!-- Formulario de Correo Electrónico Único -->
+          <!-- Columna 2: Formulario de Correo Electrónico (Sin Materia de Consulta) -->
           <div class="contact-form-card reveal-right delay-1">
             <h3 style="font-family: var(--font-serif); color: var(--accent-primary); font-size: 1.3rem; margin-bottom: 1.25rem;">Enviar Mensaje por Correo</h3>
 
@@ -489,7 +498,7 @@
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                 <div class="form-group">
                   <label for="input-phone">Teléfono de Contacto *</label>
-                  <input type="tel" id="input-phone" class="form-control" placeholder="Ej: +54 9 11 5555-4444">
+                  <input type="tel" id="input-phone" class="form-control" placeholder="Ej: +54 9 387 555-4444">
                   <div class="error-hint">Ingrese un teléfono válido.</div>
                 </div>
                 <div class="form-group">
@@ -500,20 +509,8 @@
               </div>
 
               <div class="form-group">
-                <label for="input-casetype">Materia de la Consulta</label>
-                <select id="input-casetype" class="form-control">
-                  <option value="Derecho Civil y Comercial">Derecho Civil y Comercial</option>
-                  <option value="Derecho Corporativo">Derecho Corporativo / Empresa</option>
-                  <option value="Derecho Laboral">Derecho Laboral</option>
-                  <option value="Derecho Penal">Derecho Penal</option>
-                  <option value="Familia y Sucesiones">Familia y Juicio Sucesorio</option>
-                  <option value="Otra Consulta">Otra Consulta</option>
-                </select>
-              </div>
-
-              <div class="form-group">
                 <label for="input-message">Detalle de su Consulta *</label>
-                <textarea id="input-message" class="form-control" rows="4" placeholder="Escriba aquí los detalles de su situación o consulta legal..."></textarea>
+                <textarea id="input-message" class="form-control" rows="5" placeholder="Describa brevemente los hechos o la consulta legal que desea realizar..."></textarea>
                 <div class="error-hint">Describa brevemente su consulta.</div>
               </div>
 
@@ -528,21 +525,21 @@
   </main>
 
   <!-- ==========================================================================
-       9. BOTÓN FLOTANTE DE WHATSAPP CON TOOLTIP INTERACTIVO
+       8. BOTÓN FLOTANTE DE WHATSAPP CON TOOLTIP INTERACTIVO
        ========================================================================== -->
   <div class="floating-wa-container">
     <div class="wa-tooltip hidden" id="wa-tooltip">
       <i class="fab fa-whatsapp" style="color:#25D366; font-size:1.15rem;"></i>
-      <span>¿Tiene una consulta urgente? Escríbame por WhatsApp.</span>
+      <span>¿Tiene una urgencia o consulta? Escríbanos por WhatsApp.</span>
       <button class="wa-tooltip-close" id="wa-tooltip-close" aria-label="Cerrar aviso">&times;</button>
     </div>
-    <a href="https://wa.me/5491130005555?text=Hola%20Dr.%20Valenzuela,%20deseo%20realizar%20una%20consulta%20legal." class="floating-wa-btn" target="_blank" rel="noopener" aria-label="Enviar mensaje por WhatsApp">
+    <a href="https://wa.me/5493874005555?text=Hola,%20deseo%20realizar%20una%20consulta%20legal%20con%20el%20Estudio%20Jur%C3%ADdico." class="floating-wa-btn" target="_blank" rel="noopener" aria-label="Enviar mensaje por WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
   </div>
 
   <!-- ==========================================================================
-       10. MODAL
+       9. MODAL REUTILIZABLE PARA DETALLES DE ÁREAS
        ========================================================================== -->
   <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-container">
@@ -553,57 +550,74 @@
   </div>
 
   <!-- ==========================================================================
-       11. PIE DE PÁGINA (FOOTER)
+       10. PIE DE PÁGINA (FOOTER 100% RESPONSIVO)
        ========================================================================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; color: #fff;">
-            DR. ALEJANDRO VALENZUELA
+          <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.75rem;">
+            <div style="width:32px; height:32px; background:var(--accent-tostado); border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1rem;">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: #fff;">ESTUDIO JURÍDICO</span>
           </div>
-          <p>Abogado. Asesoramiento y patrocinio jurídico integral con compromiso profesional.</p>
+          <p>Asesoramiento y representación jurídica en la Provincia de Salta. Compromiso ético, solidez procesal y atención cercana en cada caso.</p>
         </div>
 
         <div class="footer-col">
           <h4>Navegación</h4>
           <ul class="footer-links">
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#sobre-mi">Sobre Mí</a></li>
-            <li><a href="#areas">Áreas de Práctica</a></li>
-            <li><a href="#calculadora">Estimador</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#hero"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Inicio</a></li>
+            <li><a href="#estudio"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> El Estudio</a></li>
+            <li><a href="#areas"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Áreas de Práctica</a></li>
+            <li><a href="#equipo"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Equipo Profesional</a></li>
+            <li><a href="#faq"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Preguntas Frecuentes</a></li>
+            <li><a href="#contacto"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Contacto y Ubicación</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Materias Legales</h4>
+          <h4>Áreas Legales</h4>
           <ul class="footer-links">
-            <li><a href="#areas">Derecho Civil</a></li>
-            <li><a href="#areas">Derecho Corporativo</a></li>
-            <li><a href="#areas">Derecho Laboral</a></li>
-            <li><a href="#areas">Derecho Penal</a></li>
-            <li><a href="#areas">Familia & Sucesiones</a></li>
+            <li><a href="#areas"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Derecho Penal</a></li>
+            <li><a href="#areas"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Derecho Civil & Comercial</a></li>
+            <li><a href="#areas"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Familia & Sucesiones</a></li>
+            <li><a href="#areas"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Derecho Laboral</a></li>
+            <li><a href="#areas"><i class="fas fa-chevron-right" style="font-size:0.7rem; margin-right:6px; color:var(--accent-tostado);"></i> Corporativo & PyMEs</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Contacto Directo</h4>
+          <h4>Contacto & Ubicación</h4>
           <ul class="footer-links">
-            <li><i class="fas fa-envelope" style="color:var(--accent-secondary); margin-right:6px;"></i> contacto@valenzuelaabogados.com</li>
-            <li><i class="fab fa-whatsapp" style="color:var(--accent-secondary); margin-right:6px;"></i> +54 9 11 3000-5555</li>
-            <li><i class="fas fa-map-marker-alt" style="color:var(--accent-secondary); margin-right:6px;"></i> CABA, Argentina</li>
+            <li class="footer-contact-item">
+              <i class="fas fa-map-marker-alt" style="color:var(--accent-tostado); margin-top:3px;"></i>
+              <span>Av. Belgrano / Mitre 150, Salta Capital</span>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fas fa-envelope" style="color:var(--accent-tostado); margin-top:3px;"></i>
+              <span>contacto@valenzuelaabogados.com</span>
+            </li>
+            <li class="footer-contact-item">
+              <i class="fab fa-whatsapp" style="color:#25D366; margin-top:3px;"></i>
+              <span>+54 9 387 400-5555</span>
+            </li>
           </ul>
         </div>
       </div>
 
       <div class="footer-disclaimer">
-        <p>© 2026 Dr. Alejandro Valenzuela - Abogado. Todos los derechos reservados.</p>
-        <p style="margin-top: 0.4rem; font-size: 0.75rem;">Aviso Legal: La información presentada en esta página web tiene carácter informativo general y no constituye dictamen ni asesoramiento jurídico formal.</p>
+        <p>© 2026 Estudio Jurídico Salta. Todos los derechos reservados.</p>
+        <p style="margin-top: 0.4rem; font-size: 0.75rem;">Aviso Legal: La información presentada en este sitio web tiene propósitos informativos e institucionales, no constituyendo asesoramiento jurídico formal hasta el otorgamiento del patrocinio letrado correspondiente.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Leaflet.js JS CDN -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Scripts Vanilla JavaScript -->
   <script src="js/main.js"></script>
   <script src="js/form-handler.js"></script>
   <script src="js/practice-filter.js"></script>
