@@ -100,33 +100,53 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', highlightNavOnScroll, { passive: true });
 
-  // 5. TOOLTIP DINÁMICO DE WHATSAPP
+  // 5. TOOLTIP DINÁMICO DE WHATSAPP CON AUTO-DESVANECIMIENTO SUAVE
   const waTooltip = document.getElementById('wa-tooltip');
-  const waTooltipClose = document.getElementById('wa-tooltip-close');
 
   if (waTooltip) {
-    // Mostrar tooltip tras 3 segundos o al hacer scroll de 400px
     let tooltipShown = false;
-    
+    let dismissTimer = null;
+    const DISPLAY_DURATION = 5500; // 5.5 segundos de permanencia fijada antes de desaparecer
+
+    function hideTooltip() {
+      waTooltip.classList.add('hidden');
+    }
+
+    function startDismissTimer() {
+      clearTimeout(dismissTimer);
+      dismissTimer = setTimeout(hideTooltip, DISPLAY_DURATION);
+    }
+
     function triggerTooltip() {
       if (!tooltipShown) {
         tooltipShown = true;
         waTooltip.classList.remove('hidden');
+        startDismissTimer();
       }
     }
 
+    // Mostrar tooltip tras 3 segundos o al hacer scroll de 400px
     setTimeout(triggerTooltip, 3000);
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) triggerTooltip();
     }, { passive: true, once: true });
 
-    if (waTooltipClose) {
-      waTooltipClose.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        waTooltip.classList.add('hidden');
-      });
-    }
+    // Pausar temporizador si el usuario sitúa el mouse sobre el aviso para leerlo
+    waTooltip.addEventListener('mouseenter', () => {
+      clearTimeout(dismissTimer);
+    });
+
+    waTooltip.addEventListener('mouseleave', () => {
+      if (!waTooltip.classList.contains('hidden')) {
+        startDismissTimer();
+      }
+    });
+
+    // Clic en el propio tooltip para abrir la conversación de WhatsApp
+    waTooltip.style.cursor = 'pointer';
+    waTooltip.addEventListener('click', () => {
+      window.open('https://wa.me/5493874005555?text=Hola,%20deseo%20realizar%20una%20consulta%20legal%20con%20el%20Estudio%20Jur%C3%ADdico.', '_blank');
+    });
   }
 
   // 6. PREGUNTAS FRECUENTES (ACORDEÓN)
