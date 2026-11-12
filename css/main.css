@@ -108,28 +108,94 @@ button, input, select, textarea {
 }
 
 /* --------------------------------------------------------------------------
-   PLANTILLAS Y FONDOS DINÁMICOS
+   PLANTILLAS Y FONDOS DINÁMICOS VECTORIALES
    -------------------------------------------------------------------------- */
+/* Cuadrícula arquitectónica fina y sobria */
 .bg-pattern-grid {
-  background-image: radial-gradient(rgba(164, 113, 72, 0.16) 1.2px, transparent 1.2px);
-  background-size: 26px 26px;
+  background-image: 
+    linear-gradient(to right, rgba(164, 113, 72, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(164, 113, 72, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
+/* Fondo para Hero: sutil degradado de profundidad y retícula de precisión */
 .bg-mesh-hero {
-  background: 
-    radial-gradient(circle at 85% 15%, rgba(201, 154, 108, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 10% 80%, rgba(31, 71, 65, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 50% 50%, rgba(250, 246, 240, 0.8) 0%, var(--bg-primary) 100%);
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(ellipse at 80% 20%, rgba(201, 154, 108, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 85%, rgba(31, 71, 65, 0.09) 0%, transparent 60%);
 }
 
+/* Patrón de tejido de lino cruzado para secciones intermedias (El Estudio) */
+.bg-texture-linen {
+  background-color: var(--bg-section-alt);
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(164, 113, 72, 0.045) 0, rgba(164, 113, 72, 0.045) 1px, transparent 0, transparent 8px),
+    repeating-linear-gradient(-45deg, rgba(31, 71, 65, 0.035) 0, rgba(31, 71, 65, 0.035) 1px, transparent 0, transparent 8px);
+}
+
+/* Matriz de micro-puntos de precisión institucional (Áreas de Práctica / Contacto) */
+.bg-texture-dots {
+  background-image: radial-gradient(rgba(31, 71, 65, 0.13) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Patrón en sarga / twill diagonal refinado (Equipo de Abogados) */
+.bg-texture-twill {
+  background-color: var(--bg-section-linen);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(164, 113, 72, 0.065) 0,
+    rgba(164, 113, 72, 0.065) 2px,
+    transparent 2px,
+    transparent 10px
+  );
+}
+
+/* Líneas diagonales sutiles de reserva */
 .bg-pattern-lines {
   background-image: repeating-linear-gradient(
     45deg,
-    rgba(164, 113, 72, 0.03) 0,
-    rgba(164, 113, 72, 0.03) 1px,
+    rgba(164, 113, 72, 0.06) 0,
+    rgba(164, 113, 72, 0.06) 1px,
     transparent 0,
-    transparent 16px
+    transparent 14px
   );
+}
+
+/* --------------------------------------------------------------------------
+   DIVISORES DE SECCIÓN ARQUITECTÓNICOS
+   -------------------------------------------------------------------------- */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 24px;
+  position: relative;
+  z-index: 5;
+  margin-top: -12px;
+  margin-bottom: -12px;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-tostado), transparent);
+  opacity: 0.45;
+}
+
+.section-divider-badge {
+  padding: 0 1rem;
+  color: var(--accent-tostado);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
 }
 
 /* --------------------------------------------------------------------------
