@@ -4,7 +4,7 @@
    --------------------------------------------------------------------------
    DOCUMENTACIÓN TÉCNICA:
    - Panel de filtro dinámico con botón de búsqueda contextual.
-   - Mapa interactivo de Leaflet estilizado con contenedor responsivo y borde tostado.
+   - Mapa interactivo de Google Maps estilizado con contenedor responsivo, cabecera y enlace para cómo llegar.
    - Grids de equipo profesional y áreas de práctica optimizados para espacio.
    - Footer con diseño multinivel 100% responsivo.
    ========================================================================== */
@@ -854,13 +854,14 @@
   transform: translateY(-1px);
 }
 
-/* CONTENEDOR DEL MAPA INTERACTIVO LEAFLET */
+/* CONTENEDOR DEL MAPA INTERACTIVO GOOGLE MAPS */
 .map-container-box {
   margin-top: 1.75rem;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--border-tostado);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 14px rgba(35, 35, 35, 0.05);
+  background: var(--bg-surface);
 }
 
 .map-header-label {
@@ -871,14 +872,52 @@
   color: var(--accent-primary);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.5rem;
   border-bottom: 1px solid var(--border-tostado);
 }
 
-#salta-map {
+.map-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-header-link {
+  font-size: 0.78rem;
+  color: var(--accent-tostado);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.map-header-link:hover {
+  color: var(--accent-primary);
+  transform: translateX(2px);
+}
+
+#salta-map-frame {
   width: 100%;
-  height: 220px;
-  z-index: 10;
+  height: 250px;
+  border: 0;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .map-header-label {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.78rem;
+  }
+  .map-header-link {
+    font-size: 0.75rem;
+  }
+  #salta-map-frame {
+    height: 220px;
+  }
 }
 
 /* FORMULARIO DE CORREO */

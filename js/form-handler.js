@@ -1,53 +1,19 @@
 /* ==========================================================================
    ESTUDIO JURÍDICO - VALENZUELA & ASOCIADOS (SALTA)
-   FORM HANDLER & MAPA INTERACTIVO LEAFLET
+   FORM HANDLER & MAPA INTERACTIVO GOOGLE MAPS
    --------------------------------------------------------------------------
    DOCUMENTACIÓN TÉCNICA:
-   1. MAPA INTERACTIVO (LEAFLET.JS + OPENSTREETMAP):
-      - Herramienta: Leaflet.js v1.9.4 vía CDN.
-      - Ubicación: Centro de la Ciudad de Salta, Argentina (-24.7892, -65.4106).
-      - Ventajas: Ligero (<40KB), 100% responsivo, sin requerir API keys comerciales,
-        con marcador interactivo y popup informativo del estudio.
+   1. MAPA INTERACTIVO (GOOGLE MAPS OFICIAL EMBED):
+      - Ubicación: Centro de la Ciudad de Salta, Argentina (Av. Belgrano / Mitre 150).
+      - Ventajas: 100% responsivo, oficial de Google Maps, navegación GPS,
+        enlace de "Cómo llegar" para móviles y desktop, sin dependencias pesadas.
    2. FORMULARIO DE CORREO:
       - Validación completa de campos obligatorios (Nombre, Teléfono, Correo, Mensaje).
       - Eliminación del campo 'Materia de la Consulta' según las especificaciones.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. INICIALIZACIÓN DEL MAPA INTERACTIVO DE SALTA
-  const mapContainer = document.getElementById('salta-map');
-  
-  if (mapContainer && typeof L !== 'undefined') {
-    try {
-      // Coordenadas del centro de Salta Capital (Plaza 9 de Julio / Casco Céntrico)
-      const saltaCoords = [-24.7892, -65.4106];
-      
-      const map = L.map('salta-map', {
-        center: saltaCoords,
-        zoom: 15,
-        scrollWheelZoom: false // Evitar que el scroll de la página quede atrapado por el mapa
-      });
-
-      // Capa de mapas OpenStreetMap con estilo limpio
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 19
-      }).addTo(map);
-
-      // Marcador interactivo en la ubicación del despacho
-      const marker = L.marker(saltaCoords).addTo(map);
-      marker.bindPopup(`
-        <div style="font-family:'Plus Jakarta Sans',sans-serif; text-align:center; padding:4px;">
-          <strong style="color:#1F4741; font-size:0.95rem;">Estudio Jurídico</strong><br>
-          <span style="color:#5A6266; font-size:0.82rem;">Av. Belgrano / Mitre, Centro<br>Salta Capital</span>
-        </div>
-      `).openPopup();
-    } catch (e) {
-      console.warn('Error al cargar el mapa Leaflet:', e);
-    }
-  }
-
-  // 2. CONTROL DEL FORMULARIO DE CORREO (SIN MATERIA DE CONSULTA)
+  // CONTROL DEL FORMULARIO DE CORREO (SIN MATERIA DE CONSULTA)
   const contactForm = document.getElementById('contact-form');
   const formAlert = document.getElementById('form-alert');
   const submitBtn = document.getElementById('form-submit-btn');
